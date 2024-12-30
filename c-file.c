@@ -8,7 +8,7 @@
 extern "C" {
 #endif
 
-void __stdcall asmfunc(int p1 ,int p2);
+void __stdcall asmfunc(int *p1, int* p2);       //Declaring Assembly function with parameter 
 
 #ifdef __cplusplus
 }
@@ -17,17 +17,24 @@ void __stdcall asmfunc(int p1 ,int p2);
 
 int main() {
     system("cls");
-    int abc;
+    int sum = 0;                                    //Declaring to store some Value
+    int arr[10] = {1,-2,3,-4,5,-6,7,-8,9,-10};      //declaring Array
     printf("assembly proc calling from  from C! \n");
-getch();
-
+    printf("Elements of array: ");
+    for(int i = 0; i < 10;i++)                      //Showing elements of array
+    {
+        printf("%i , ",arr[i]);
+    }
     
-    asmfunc(3,5); //assembly proc calling
+    getch();
+    asmfunc(arr,&sum);                             //assembly proc calling with pass by reference
+    printf("\nSum of Negative Numbers: %i",sum);   //showing Sum using C-variable
+    
    
    getch();
     
     
-    printf("back to  C! \n"); // printing in c
+    printf("\nback to  C!");                         // printing in c    
     
   
     
